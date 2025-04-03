@@ -38,6 +38,10 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
         int novoY = posicaoY + dy[i];
         if (novoX >= 0 && novoX < linha && novoY >= 0 && novoY < coluna)
         {
+            if (make_pair(novoX, novoY) == ultPosicao)
+            {
+                continue;
+            }
             if (matriz[novoX][novoY] == 4)
             {
                 melhorMovimento = make_pair(novoX, novoY);
@@ -69,6 +73,7 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
     if (melhorMovimento.first != -1)
 
     {
+        ultPosicao = posicao;
         setPosicao(melhorMovimento.first, melhorMovimento.second);
         encontrouAgua++;
         passos++;
@@ -88,6 +93,7 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
 
     else if (movimentosIntermediarios.size() > 0)
     {
+        ultPosicao = posicao;
         pair<int, int> movimento = movimentosIntermediarios[rand() % movimentosIntermediarios.size()];
         setPosicao(movimento.first, movimento.second);
         passos++;
@@ -96,6 +102,7 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
 
     else if (movimentosRuins.size() > 0)
     {
+        ultPosicao = posicao;
         pair<int, int> movimento = movimentosRuins[rand() % movimentosRuins.size()];
         setPosicao(movimento.first, movimento.second);
         passos++;

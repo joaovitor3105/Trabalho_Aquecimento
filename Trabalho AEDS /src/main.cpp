@@ -17,7 +17,7 @@ int main()
         }
         cout << endl;
     }
-    for (int i; i < 50; i++)
+    for (int i = 0; i < 50; i++)
     {
         animal.mover(matriz, matriz[0].size(), matriz.size());
         cout << "Posicao do animal: " << animal.getPosicao().first << ", " << animal.getPosicao().second << endl;

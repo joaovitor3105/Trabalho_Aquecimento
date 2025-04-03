@@ -7,6 +7,7 @@ class Animal
 {
 private:
     pair<int, int> posicao;
+    pair<int, int> ultPosicao;
     int tempoAreaSegura;
     int passos;
     int encontrouAgua;
