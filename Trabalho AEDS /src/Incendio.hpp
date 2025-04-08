@@ -14,4 +14,6 @@ private:
 public:
     Incendio(int posicaoX, int posicaoY);
     void propagarIncendio(vector<vector<int>> &matriz, bool sul, bool norte, bool leste, bool oeste);
+    bool verificarPosicaoValida(const vector<vector<int>> &matriz, int x, int y);
+    void queimarPosicao(vector<vector<int>> &matriz, int x, int y);
 };
