@@ -96,6 +96,10 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
         ultPosicao = posicao;
         pair<int, int> movimento = movimentosIntermediarios[rand() % movimentosIntermediarios.size()];
         setPosicao(movimento.first, movimento.second);
+        if (matriz[movimento.first][movimento.second] == 0)
+        {
+            tempoAreaSegura++;
+        }
         passos++;
         return;
     }
