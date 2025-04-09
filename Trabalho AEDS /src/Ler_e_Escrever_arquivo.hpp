@@ -4,8 +4,9 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include "Floresta.hpp"
 
 using namespace std;
 
-vector<vector<int>> lerArquivo();
+Floresta lerArquivo();
 void escreverArquivo(vector<vector<int>> matriz);

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include "Config.hpp"
 using namespace std;
 
 class Incendio
@@ -13,7 +14,7 @@ private:
 
 public:
     Incendio(int posicaoX, int posicaoY);
-    void propagarIncendio(vector<vector<int>> &matriz, bool sul, bool norte, bool leste, bool oeste);
+    void propagarIncendio(vector<vector<int>> &matriz);
     bool verificarPosicaoValida(const vector<vector<int>> &matriz, int x, int y);
     void queimarPosicao(vector<vector<int>> &matriz, int x, int y);
 };

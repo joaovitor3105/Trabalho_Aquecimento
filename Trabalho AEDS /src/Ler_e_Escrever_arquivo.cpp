@@ -1,13 +1,13 @@
 #include "Ler_e_Escrever_arquivo.hpp"
 #include "Config.hpp"
 
-vector<vector<int>> lerArquivo()
+Floresta lerArquivo()
 {
     ifstream arquivo("input.dat");
     if (!arquivo.is_open())
     {
         cout << "Erro ao abrir o arquivo " << "input.dat" << endl;
-        return vector<vector<int>>();
+        return Floresta();
     }
 
     int num_linhas = 0;
@@ -32,8 +32,8 @@ vector<vector<int>> lerArquivo()
             stream >> matriz[i][j];
         }
     }
-
-    return matriz;
+    Floresta floresta(matriz, num_linhas, num_colunas, incendio_inicial_X, incendio_inicial_Y);
+    return floresta;
 }
 
 void escreverArquivo(vector<vector<int>> matriz)

@@ -12,6 +12,14 @@ Animal::~Animal()
 {
 }
 
+Animal::Animal()
+{
+    this->posicao = make_pair(-1, -1);
+    this->tempoAreaSegura = 0;
+    this->passos = 0;
+    this->encontrouAgua = 0;
+}
+
 pair<int, int> Animal::getPosicao() const
 {
     return posicao;

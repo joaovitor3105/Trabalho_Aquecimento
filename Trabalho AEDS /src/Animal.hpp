@@ -16,6 +16,7 @@ private:
 
 public:
     Animal(int posicaoX, int posicaoY);
+    Animal();
     ~Animal();
     pair<int, int> getPosicao() const;
     int getTempoAreaSegura() const;

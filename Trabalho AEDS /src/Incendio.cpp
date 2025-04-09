@@ -5,7 +5,7 @@ Incendio::Incendio(int posicaoX, int posicaoY)
 {
     this->posicao.push_back(make_pair(posicaoX, posicaoY));
 }
-void Incendio::propagarIncendio(vector<vector<int>> &matriz, bool sul, bool norte, bool leste, bool oeste)
+void Incendio::propagarIncendio(vector<vector<int>> &matriz)
 {
     if (!ultPosicao.empty())
     {
@@ -24,25 +24,25 @@ void Incendio::propagarIncendio(vector<vector<int>> &matriz, bool sul, bool nort
 
     for (auto &pos : ultPosicao)
     {
-        if (sul)
+        if (SUL)
         {
             int novoX = pos.first + 1;
             int novoY = pos.second;
             queimarPosicao(matriz, novoX, novoY);
         }
-        if (norte)
+        if (NORTE)
         {
             int novoX = pos.first - 1;
             int novoY = pos.second;
             queimarPosicao(matriz, novoX, novoY);
         }
-        if (leste)
+        if (LESTE)
         {
             int novoX = pos.first;
             int novoY = pos.second + 1;
             queimarPosicao(matriz, novoX, novoY);
         }
-        if (oeste)
+        if (OESTE)
         {
             int novoX = pos.first;
             int novoY = pos.second - 1;
@@ -53,7 +53,7 @@ void Incendio::propagarIncendio(vector<vector<int>> &matriz, bool sul, bool nort
 
 bool Incendio::verificarPosicaoValida(const vector<vector<int>> &matriz, int x, int y)
 {
-    if (x < 0 || x >= matriz.size() || y < 0 || y >= matriz[0].size())
+    if (x < 0 || x >= static_cast<int>(matriz.size()) || y < 0 || y >= static_cast<int>(matriz[0].size()))
     {
         return false;
     }
