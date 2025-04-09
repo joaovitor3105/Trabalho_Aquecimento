@@ -1,5 +1,5 @@
 #pragma once
-#define SUL true
+#define SUL false
 #define NORTE true
-#define LESTE true
+#define LESTE false
 #define OESTE true

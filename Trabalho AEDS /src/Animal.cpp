@@ -90,7 +90,7 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
         {
             int novoX = melhorMovimento.first + dx[i];
             int novoY = melhorMovimento.second + dy[i];
-            if (novoX >= 0 && novoX < linha && novoY >= 0 && novoY < coluna)
+            if (novoX >= 0 && novoX < linha && novoY >= 0 && novoY < coluna && matriz[novoX][novoY] != 0)
             {
                 matriz[novoX][novoY] = 1;
             }
