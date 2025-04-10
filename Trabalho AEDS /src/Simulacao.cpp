@@ -30,6 +30,7 @@ void executarSimulacao()
     bool matrizQueimada = false;
     for (int i = 0; i < interacoes && !matrizQueimada; i++)
     {
+        cout << "Interacao: " << i + 1 << endl;
         animal.mover(matriz, floresta.num_colunas, floresta.num_linhas);
         cout << "Animal na posicao: (" << animal.getPosicao().first << ", " << animal.getPosicao().second << ")" << endl;
         cout << "Passos: " << animal.getPassos() << ", Tempo na area segura: " << animal.getTempoAreaSegura() << ", Encontrou agua: " << animal.getEncontrouAgua() << endl;
@@ -44,5 +45,5 @@ void executarSimulacao()
             cout << endl;
         }
         cout << endl;
-        }
+    }
 }

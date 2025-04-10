@@ -3,4 +3,4 @@
 #define NORTE true
 #define LESTE true
 #define OESTE true
-#define interacoes 40
+#define interacoes 1000
