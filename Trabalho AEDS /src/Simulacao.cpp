@@ -27,12 +27,13 @@ void executarSimulacao()
         }
     }
 
-    for (int i = 0; i < 50; i++)
+    bool matrizQueimada = false;
+    for (int i = 0; i < interacoes && !matrizQueimada; i++)
     {
         animal.mover(matriz, floresta.num_colunas, floresta.num_linhas);
         cout << "Animal na posicao: (" << animal.getPosicao().first << ", " << animal.getPosicao().second << ")" << endl;
         cout << "Passos: " << animal.getPassos() << ", Tempo na area segura: " << animal.getTempoAreaSegura() << ", Encontrou agua: " << animal.getEncontrouAgua() << endl;
-        incendio.propagarIncendio(matriz);
+        matrizQueimada = incendio.propagarIncendio(matriz);
         cout << "Matriz atual:" << endl;
         for (size_t i = 0; i < matriz.size(); i++)
         {
@@ -43,5 +44,5 @@ void executarSimulacao()
             cout << endl;
         }
         cout << endl;
-    }
+        }
 }

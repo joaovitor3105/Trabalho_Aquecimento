@@ -1,2 +1,2 @@
-enquanto ele estiver parado ele contara os passos?
-como e a estrutura do config.hpp?
+quando o fogo pegar na matriz inteira 
+animal cercado

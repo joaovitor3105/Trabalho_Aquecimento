@@ -3,9 +3,9 @@
 Incendio::Incendio(int posicaoX, int posicaoY)
 
 {
-    this->posicao.push_back(make_pair(posicaoX, posicaoY));
+    this->proxPosicao.push_back(make_pair(posicaoX, posicaoY));
 }
-void Incendio::propagarIncendio(vector<vector<int>> &matriz)
+bool Incendio::propagarIncendio(vector<vector<int>> &matriz)
 {
     if (!ultPosicao.empty())
     {
@@ -16,11 +16,11 @@ void Incendio::propagarIncendio(vector<vector<int>> &matriz)
     }
 
     ultPosicao.clear();
-    for (auto &pos : posicao)
+    for (auto &pos : proxPosicao)
     {
         ultPosicao.push_back(pos);
     }
-    posicao.clear();
+    proxPosicao.clear();
 
     for (auto &pos : ultPosicao)
     {
@@ -49,6 +49,15 @@ void Incendio::propagarIncendio(vector<vector<int>> &matriz)
             queimarPosicao(matriz, novoX, novoY);
         }
     }
+    cout << "\ntamanho do vetor:" << proxPosicao.size() << endl;
+    if (ultPosicao.empty())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 bool Incendio::verificarPosicaoValida(const vector<vector<int>> &matriz, int x, int y)
@@ -65,6 +74,6 @@ void Incendio::queimarPosicao(vector<vector<int>> &matriz, int x, int y)
     if (verificarPosicaoValida(matriz, x, y) && matriz[x][y] == 1)
     {
         matriz[x][y] = 2;
-        posicao.push_back(make_pair(x, y));
+        proxPosicao.push_back(make_pair(x, y));
     }
 }

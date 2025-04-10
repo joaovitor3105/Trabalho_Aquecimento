@@ -1,5 +1,6 @@
 #pragma once
-#define SUL false
+#define SUL true
 #define NORTE true
-#define LESTE false
+#define LESTE true
 #define OESTE true
+#define interacoes 40
