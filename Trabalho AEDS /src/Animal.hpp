@@ -13,7 +13,7 @@ private:
     int encontrouAgua;
     int dx[4] = {1, -1, 0, 0};
     int dy[4] = {0, 0, 1, -1};
-    int morte;
+    int morte = 0;
 
 public:
     Animal(int posicaoX, int posicaoY);

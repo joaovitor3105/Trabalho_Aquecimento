@@ -37,14 +37,27 @@ void executarSimulacao()
 
         matrizQueimada = incendio.propagarIncendio(matriz);
 
-        /*if (matriz[animal.getPosicao().first][animal.getPosicao().second] == 2)
+        if (matriz[animal.getPosicao().first][animal.getPosicao().second] == 2)
         {
             bool morreu = !animal.segundaChance(matriz, floresta.num_colunas, floresta.num_linhas);
             if (morreu)
             {
                 animal.setMorte(i);
             }
-        }*/
+        }
+        cout << "Animal: " << animal.getPosicao().first << " " << animal.getPosicao().second << endl;
+        cout << "Passos: " << animal.getPassos() << endl;
+        cout << "Encontrou agua: " << animal.getEncontrouAgua() << endl;
+        cout << "Morte: " << animal.getMorte() << endl;
+        cout << "----------------------------------------" << endl;
+        for (int i = 0; i < floresta.num_linhas; i++)
+        {
+            for (int j = 0; j < floresta.num_colunas; j++)
+            {
+                cout << matriz[i][j] << " ";
+            }
+            cout << endl;
+        }
     }
     escreverArquivo(matriz, animal);
 }
