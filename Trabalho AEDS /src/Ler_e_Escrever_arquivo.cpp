@@ -36,7 +36,7 @@ Floresta lerArquivo()
     return floresta;
 }
 
-void escreverArquivo(vector<vector<int>> matriz)
+void escreverArquivo(vector<vector<int>> matriz, Animal animal)
 {
     ofstream arquivo("output.dat");
     if (!arquivo.is_open())
@@ -53,4 +53,16 @@ void escreverArquivo(vector<vector<int>> matriz)
         }
         arquivo << endl;
     }
+    if (animal.getMorte() == 0)
+    {
+        arquivo << "Animal sobreviveu" << endl;
+    }
+    else
+    {
+        arquivo << "Animal morreu na interacao: " << animal.getMorte() << endl;
+    }
+    arquivo << "Animal na posicao: (" << animal.getPosicao().first << ", " << animal.getPosicao().second << ")" << endl;
+    arquivo << "Passos: " << animal.getPassos() << ", Tempo na area segura: " << animal.getTempoAreaSegura() << ", Encontrou agua: " << animal.getEncontrouAgua() << endl;
+
+    arquivo.close();
 }

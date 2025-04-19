@@ -1,2 +1,2 @@
-quando o fogo pegar na matriz inteira 
-animal cercado
+animal cercado e apos o animal morrer parar de se movimentar e a interação continuar
+log de erro

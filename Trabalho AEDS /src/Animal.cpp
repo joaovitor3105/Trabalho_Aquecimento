@@ -6,6 +6,7 @@ Animal::Animal(int posicaoX, int posicaoY)
     this->tempoAreaSegura = 0;
     this->passos = 0;
     this->encontrouAgua = 0;
+    this->morte = 0;
 }
 
 Animal::~Animal()
@@ -141,4 +142,31 @@ int Animal::getPassos() const
 int Animal::getEncontrouAgua() const
 {
     return encontrouAgua;
+}
+
+void Animal::setMorte(int morreu)
+{
+    this->morte = morreu;
+}
+int Animal::getMorte()
+{
+    return this->morte;
+}
+
+bool Animal::segundaChance(vector<vector<int>> &matriz, int coluna, int linha)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        int novoX = matriz[i][0] + dx[i];
+        int novoY = matriz[i][1] + dy[i];
+        if (novoX >= 0 && novoX < linha && novoY >= 0 && novoY < coluna)
+        {
+            if (matriz[novoX][novoY] != 2)
+            {
+                mover(matriz, coluna, linha);
+                return true;
+            }
+        }
+    }
+    return false;
 }

@@ -30,20 +30,21 @@ void executarSimulacao()
     bool matrizQueimada = false;
     for (int i = 0; i < interacoes && !matrizQueimada; i++)
     {
-        cout << "Interacao: " << i + 1 << endl;
-        animal.mover(matriz, floresta.num_colunas, floresta.num_linhas);
-        cout << "Animal na posicao: (" << animal.getPosicao().first << ", " << animal.getPosicao().second << ")" << endl;
-        cout << "Passos: " << animal.getPassos() << ", Tempo na area segura: " << animal.getTempoAreaSegura() << ", Encontrou agua: " << animal.getEncontrouAgua() << endl;
-        matrizQueimada = incendio.propagarIncendio(matriz);
-        cout << "Matriz atual:" << endl;
-        for (size_t i = 0; i < matriz.size(); i++)
+        if (animal.getMorte() == 0)
         {
-            for (size_t j = 0; j < matriz[i].size(); j++)
-            {
-                cout << matriz[i][j] << " ";
-            }
-            cout << endl;
+            animal.mover(matriz, floresta.num_colunas, floresta.num_linhas);
         }
-        cout << endl;
+
+        matrizQueimada = incendio.propagarIncendio(matriz);
+
+        /*if (matriz[animal.getPosicao().first][animal.getPosicao().second] == 2)
+        {
+            bool morreu = !animal.segundaChance(matriz, floresta.num_colunas, floresta.num_linhas);
+            if (morreu)
+            {
+                animal.setMorte(i);
+            }
+        }*/
     }
+    escreverArquivo(matriz, animal);
 }

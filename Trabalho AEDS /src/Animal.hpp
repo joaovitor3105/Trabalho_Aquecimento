@@ -13,6 +13,7 @@ private:
     int encontrouAgua;
     int dx[4] = {1, -1, 0, 0};
     int dy[4] = {0, 0, 1, -1};
+    int morte;
 
 public:
     Animal(int posicaoX, int posicaoY);
@@ -24,5 +25,8 @@ public:
     int getEncontrouAgua() const;
     void setPosicao(int posicaoX, int posicaoY);
     void mover(vector<vector<int>> &matriz, int coluna, int linha);
+    void setMorte(int morreu);
+    int getMorte();
+    bool segundaChance(vector<vector<int>> &matriz, int coluna, int linha);
 };
 ;
