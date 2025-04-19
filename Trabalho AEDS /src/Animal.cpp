@@ -37,16 +37,19 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
     int posicaoX = this->posicao.first;
     int posicaoY = this->posicao.second;
 
+    // variaveis de controle de prioridade de movimento
     pair<int, int> melhorMovimento = {-1, -1};
     vector<pair<int, int>> movimentosIntermediarios;
     vector<pair<int, int>> movimentosRuins;
 
+    // looping para classificar possiveis movimentos
     for (int i = 0; i < 4; i++)
     {
         int novoX = posicaoX + dx[i];
         int novoY = posicaoY + dy[i];
         if (novoX >= 0 && novoX < linha && novoY >= 0 && novoY < coluna)
         {
+            // ignorando a posição anterior
             if (make_pair(novoX, novoY) == ultPosicao)
             {
                 continue;
@@ -66,6 +69,8 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
             }
         }
     }
+
+    // se o animal estiver em posição segura pode ficar por 3 iterações
     if (matriz[posicaoX][posicaoY] == 0)
     {
         if (tempoAreaSegura < 3)
@@ -86,7 +91,10 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
         setPosicao(melhorMovimento.first, melhorMovimento.second);
         encontrouAgua++;
         passos++;
+        // transforma a posição de agua para area segura
         matriz[melhorMovimento.first][melhorMovimento.second] = 0;
+
+        // marca as posições adjacentes como floresta saudavel
         for (int i = 0; i < 4; i++)
         {
             int novoX = melhorMovimento.first + dx[i];
@@ -119,12 +127,6 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
         pair<int, int> movimento = movimentosRuins[rand() % movimentosRuins.size()];
         setPosicao(movimento.first, movimento.second);
         passos++;
-        return;
-    }
-
-    else
-    {
-        cout << "Animal sem movimento possivel" << endl;
         return;
     }
 }

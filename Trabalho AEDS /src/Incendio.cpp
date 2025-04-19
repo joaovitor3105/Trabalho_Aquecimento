@@ -7,6 +7,7 @@ Incendio::Incendio(int posicaoX, int posicaoY)
 }
 bool Incendio::propagarIncendio(vector<vector<int>> &matriz)
 {
+
     if (!ultPosicao.empty())
     {
         for (auto &pos : ultPosicao)
@@ -21,6 +22,8 @@ bool Incendio::propagarIncendio(vector<vector<int>> &matriz)
         ultPosicao.push_back(pos);
     }
     proxPosicao.clear();
+
+    // verifica se o incendio é afetado pelo vento
     if (VENTO)
     {
         for (auto &pos : ultPosicao)
@@ -51,6 +54,7 @@ bool Incendio::propagarIncendio(vector<vector<int>> &matriz)
             }
         }
     }
+    // se o vento não estiver ativo, queima as posições adjacentes
     else
     {
         for (auto &pos : ultPosicao)
@@ -63,6 +67,8 @@ bool Incendio::propagarIncendio(vector<vector<int>> &matriz)
             }
         }
     }
+
+    // verifica se a matriz está queimada
     if (ultPosicao.empty())
     {
         return true;
