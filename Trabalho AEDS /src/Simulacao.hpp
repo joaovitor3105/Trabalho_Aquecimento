@@ -7,5 +7,5 @@
 #include "Config.hpp"
 
 using namespace std;
-
+// executa a simulação de incêndio e movimento do animal
 void executarSimulacao();

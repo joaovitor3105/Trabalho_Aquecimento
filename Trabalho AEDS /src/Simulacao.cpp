@@ -9,10 +9,16 @@ using namespace std;
 
 void executarSimulacao()
 {
+    // limpa arquivo de saida
+    limparSaida();
+
+    // lê arquivo de entrada e inicializa variaveis
     Floresta floresta = lerArquivo();
     Incendio incendio(floresta.incendio_inicial_X, floresta.incendio_inicial_Y);
     vector<vector<int>> matriz = floresta.matriz;
     Animal animal;
+
+    // coloca animal na primeira posição segura
     bool encontrou = false;
     for (int i = 0; i < floresta.num_linhas && !encontrou; i++)
     {
@@ -27,16 +33,25 @@ void executarSimulacao()
         }
     }
 
+    // se nao encontrar colocar no log****************************************
+
+    // variavel de controle para o loop
     bool matrizQueimada = false;
+
+    // loop de iterações(para em caso de queimar a matriz ou atingir o maximo de iterações)
     for (int i = 0; i < interacoes && !matrizQueimada; i++)
     {
+        // movimento do animal se não estiver morto
         if (animal.getMorte() == 0)
         {
             animal.mover(matriz, floresta.num_colunas, floresta.num_linhas);
         }
 
+        // propagação do incendio
         matrizQueimada = incendio.propagarIncendio(matriz);
 
+        // se o animal estiver na posição do incendio ganha uma segunda chance
+        // se não conseguir escapar morre
         if (matriz[animal.getPosicao().first][animal.getPosicao().second] == 2)
         {
             bool morreu = !animal.segundaChance(matriz, floresta.num_colunas, floresta.num_linhas);
@@ -45,19 +60,11 @@ void executarSimulacao()
                 animal.setMorte(i);
             }
         }
-        cout << "Animal: " << animal.getPosicao().first << " " << animal.getPosicao().second << endl;
-        cout << "Passos: " << animal.getPassos() << endl;
-        cout << "Encontrou agua: " << animal.getEncontrouAgua() << endl;
-        cout << "Morte: " << animal.getMorte() << endl;
-        cout << "----------------------------------------" << endl;
-        for (int i = 0; i < floresta.num_linhas; i++)
-        {
-            for (int j = 0; j < floresta.num_colunas; j++)
-            {
-                cout << matriz[i][j] << " ";
-            }
-            cout << endl;
-        }
+
+        // escreve matriz no arquivo
+        escreverArquivoMatriz(matriz, i);
     }
-    escreverArquivo(matriz, animal);
+
+    // relatorio final da simulação
+    gerarRelatorio(animal);
 }

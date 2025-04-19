@@ -21,35 +21,48 @@ bool Incendio::propagarIncendio(vector<vector<int>> &matriz)
         ultPosicao.push_back(pos);
     }
     proxPosicao.clear();
-
-    for (auto &pos : ultPosicao)
+    if (VENTO)
     {
-        if (SUL)
+        for (auto &pos : ultPosicao)
         {
-            int novoX = pos.first + 1;
-            int novoY = pos.second;
-            queimarPosicao(matriz, novoX, novoY);
-        }
-        if (NORTE)
-        {
-            int novoX = pos.first - 1;
-            int novoY = pos.second;
-            queimarPosicao(matriz, novoX, novoY);
-        }
-        if (LESTE)
-        {
-            int novoX = pos.first;
-            int novoY = pos.second + 1;
-            queimarPosicao(matriz, novoX, novoY);
-        }
-        if (OESTE)
-        {
-            int novoX = pos.first;
-            int novoY = pos.second - 1;
-            queimarPosicao(matriz, novoX, novoY);
+            if (SUL)
+            {
+                int novoX = pos.first + 1;
+                int novoY = pos.second;
+                queimarPosicao(matriz, novoX, novoY);
+            }
+            if (NORTE)
+            {
+                int novoX = pos.first - 1;
+                int novoY = pos.second;
+                queimarPosicao(matriz, novoX, novoY);
+            }
+            if (LESTE)
+            {
+                int novoX = pos.first;
+                int novoY = pos.second + 1;
+                queimarPosicao(matriz, novoX, novoY);
+            }
+            if (OESTE)
+            {
+                int novoX = pos.first;
+                int novoY = pos.second - 1;
+                queimarPosicao(matriz, novoX, novoY);
+            }
         }
     }
-    cout << "\ntamanho do vetor:" << proxPosicao.size() << endl;
+    else
+    {
+        for (auto &pos : ultPosicao)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                int novoX = pos.first + dx[i];
+                int novoY = pos.second + dy[i];
+                queimarPosicao(matriz, novoX, novoY);
+            }
+        }
+    }
     if (ultPosicao.empty())
     {
         return true;
