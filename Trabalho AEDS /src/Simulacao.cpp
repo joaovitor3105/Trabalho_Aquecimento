@@ -38,8 +38,11 @@ void executarSimulacao()
     // variavel de controle para o loop
     bool matrizQueimada = false;
 
+    // escreve matriz inicial no arquivo
+    escreverArquivoMatriz(matriz, 0);
+
     // loop de iterações(para em caso de queimar a matriz ou atingir o maximo de iterações)
-    for (int i = 0; i < interacoes && !matrizQueimada; i++)
+    for (int i = 1; i < interacoes && !matrizQueimada; i++)
     {
         // movimento do animal se não estiver morto
         if (animal.getMorte() == 0)
