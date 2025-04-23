@@ -1,6 +1,6 @@
 # Simulador de Propagação de Incêndios em Florestas
 
-Este repositório contém a implementação de um simulador de propagação de incêndios em florestas, desenvolvido como parte de um trabalho acadêmico. O objetivo principal é modelar a propagação do fogo em uma matriz que representa a floresta, utilizando a linguagem de programação C++. Adicionalmente, o simulador é capaz de identificar rotas de fuga para um animal presente na floresta, conforme especificações descritas no enunciado do trabalho.
+Este repositório contém a implementação de um simulador de propagação de incêndios em florestas, desenvolvido como parte de um trabalho acadêmico. O objetivo principal é modelar a propagação do fogo em uma matriz que representa a floresta, utilizando a linguagem de programação C++. Adicionalmente, o simulador é capaz de identificar rotas de fuga para um animal presente na floresta.
 
 ## Índice
 
@@ -25,18 +25,18 @@ O simulador utiliza uma matriz dinâmica para representar a floresta. Cada célu
 - **3**: Árvore queimada (não propaga mais fogo)
 - **4**: Presença de água
 
-A simulação consiste em iterar sobre a matriz para propagar o incêndio e deslocar um animal até que o fogo se extinga ou o número máximo de iterações seja alcançado.
+A simulação consiste em iterar sobre a matriz para propagar o incêndio e deslocar um animal até que o fogo se extingue ou o número máximo de iterações seja alcançado.
 
 ## Especificação do Trabalho
 
 ### Requisitos
 
-- Implementação em C ou C++.
-- Modularização do código com headers (`.h` ou `.hpp`) e arquivos de implementação (`.c` ou `.cpp`).
-- Configuração global através de um arquivo `config.h` ou `config.hpp`.
+- Implementação em C++.
+- Modularização do código com headers (`.hpp`) e arquivos de implementação (`.cpp`).
+- Configuração global através de um arquivo `config.hpp`.
 - Entrada de dados a partir de `input.dat` e saída escrita em `output.dat`.
-- Simulação iterativa e visual, exibindo o estado da floresta em cada iteração.
-- Compatibilidade com sistemas operacionais Linux e compilação com `make`.
+- Simulação iterativa e visual, exibindo o estado da floresta em cada iteração no arquivo de saída.
+- Compatibilidade com sistema Linux e compilação com `make`.
 
 ### Funcionalidades
 
@@ -45,12 +45,6 @@ A simulação consiste em iterar sobre a matriz para propagar o incêndio e desl
 3. Movimentação de um animal buscando rotas de fuga.
 4. Relatório de desempenho e análise ao final da simulação.
 
-## Configuração do Ambiente
-
-Certifique-se de que o ambiente Linux possui os seguintes requisitos:
-- GCC ou outro compilador C/C++ compatível.
-- `make` instalado para automação da compilação.
-- Editor de texto ou IDE para visualizar e editar os arquivos.
 
 ## Compilação e Execução
 
@@ -77,6 +71,7 @@ O arquivo `input.dat` deve conter:
 - Dimensões da matriz (N x M).
 - Coordenadas iniciais do incêndio.
 - Matriz da floresta, linha por linha.
+- Todos dados separados por espaço.
 
 #### Exemplo:
 ```
@@ -95,17 +90,68 @@ A cada iteração, o estado atualizado da matriz será escrito no arquivo `outpu
 #### Exemplo:
 Após a 1ª iteração:
 ```
-1 2 1 1 4
-2 2 2 1 1
-1 2 1 1 4
-0 0 1 1 1
-1 4 1 0 4
+interação: 1
+1 2 1 1 4 
+2 2 2 1 1 
+1 2 1 1 4 
+0 0 1 1 1 
+1 4 1 0 4 
+```
+Após a finalização das interações será escrito no arquivo `output.dat` o relatório da simulação:
+#### Exemplo:
+```
+----------------------------------------
+Animal sobreviveu.
+Animal na posição: (4, 1)
+Passos: 2, Encontrou água: 1
+O vento estava ativo nas direções:
+ Sul
+ Norte
+ Leste
+ Oeste
+
+----------------------------------------
+```
+### Arquivo de Configuração (`Config.hpp`)
+
+O arquivo `Config.hpp` permite configurar globalmente parâmetros importantes para a simulação, como a propagação do fogo com ou sem vento, as direções do vento e o número máximo de interações permitidas.
+
+#### Configurações Disponíveis
+1. **Habilitar ou Desabilitar o Vento**
+   - A configuração `VENTO` permite ativar (`true`) ou desativar (`false`) a influência do vento na propagação do incêndio.
+
+2. **Direções do Vento**
+   - As direções (`SUL`, `NORTE`, `LESTE`, `OESTE`) especificam para onde o vento direciona a propagação do fogo. Cada direção pode ser ativada (`true`) ou desativada (`false`) individualmente.
+
+3. **Número Máximo de Interações**
+   - A configuração `interacoes` define o limite máximo de iterações da simulação. Após atingir esse valor, a execução será finalizada automaticamente.
+
+#### Estrutura do Arquivo
+
+```cpp
+#define VENTO true          // Ativa ou desativa o vento na simulação
+
+#define SUL true            // Permite propagação para o sul
+#define NORTE true          // Permite propagação para o norte
+#define LESTE true          // Permite propagação para o leste
+#define OESTE true          // Permite propagação para o oeste
+
+#define interacoes 1000     // Número máximo de interações da simulação
 ```
 
-## Estratégias de Propagação do Incêndio
+#### Observação
+- Caso `VENTO` esteja configurado como `false`, as variáveis `SUL`, `NORTE`, `LESTE` e `OESTE` serão ignoradas.
+- Alterações nesse arquivo devem ser realizadas antes da compilação do programa.
 
-1. **Sem influência do vento**: O fogo se propaga linearmente em todas as direções ortogonais.
-2. **Com influência do vento**: O fogo se propaga apenas em direções configuradas no arquivo `config.h`.
+### Arquivo de Saída de Erros (`log.txt`)
+O arquivo `log.txt` é utilizado para registrar mensagens de erro.
+
+#### Exemplo de Conteúdo do `log.txt`
+```
+[2025-04-23 22:09:00] Erro ao abrir o arquivo input.dat.
+[2025-04-23 21:08:00] Não foi possível encontrar uma posição segura para o animal.
+[2025-04-23 20:05:00] Erro ao abrir o arquivo output.dat.
+```
 
 ### Regras de Propagação
 
@@ -124,7 +170,7 @@ O animal busca rotas de fuga em direções ortogonais com a seguinte prioridade:
 
 - O animal executa sua movimentação antes da propagação do fogo.
 - Se o animal encontrar água, a célula é atualizada para 0, e as células adjacentes são convertidas para 1.
-- Caso o fogo alcance a posição do animal, ele recebe uma segunda chance para escapar.
+- Caso o fogo alcance a posição do animal, ele recebe uma segunda chance para escapar,se ele estiver cercado pelo fogo ele ira morrer e não vai se mover mais.
 
 ## Padrões de Propagação e Análise
 
