@@ -17,3 +17,5 @@ Floresta lerArquivo();
 void escreverArquivoMatriz(vector<vector<int>> matriz, int interacao);
 // escreve o relatorio final no arquivo de saida
 void gerarRelatorio(Animal animal);
+// registra o erro no arquivo de log
+void registrarErro(string mensagem);

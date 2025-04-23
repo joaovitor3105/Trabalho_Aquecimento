@@ -157,10 +157,13 @@ int Animal::getMorte()
 
 bool Animal::segundaChance(vector<vector<int>> &matriz, int coluna, int linha)
 {
+    int posicaoX = this->posicao.first;
+    int posicaoY = this->posicao.second;
+
     for (int i = 0; i < 4; i++)
     {
-        int novoX = matriz[i][0] + dx[i];
-        int novoY = matriz[i][1] + dy[i];
+        int novoX = posicaoX + dx[i];
+        int novoY = posicaoY + dy[i];
         if (novoX >= 0 && novoX < linha && novoY >= 0 && novoY < coluna)
         {
             if (matriz[novoX][novoY] != 2)

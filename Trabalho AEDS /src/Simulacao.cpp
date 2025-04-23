@@ -33,7 +33,12 @@ void executarSimulacao()
         }
     }
 
-    // se nao encontrar colocar no log****************************************
+    // se nao encontrar colocar no log
+    if (!encontrou)
+    {
+        registrarErro("Não foi possível encontrar uma posição segura para o animal.");
+        return;
+    }
 
     // variavel de controle para o loop
     bool matrizQueimada = false;

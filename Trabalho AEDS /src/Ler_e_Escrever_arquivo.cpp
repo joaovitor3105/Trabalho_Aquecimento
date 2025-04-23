@@ -1,13 +1,14 @@
 #include "Ler_e_Escrever_arquivo.hpp"
 #include "Config.hpp"
+#include <ctime>
 
 Floresta lerArquivo()
 { // abre o arquivo de entrada
     ifstream arquivo("input.dat");
     // verifica se o arquivo foi aberto corretamente
     if (!arquivo.is_open())
-    { // escrever no log****************************
-        cout << "Erro ao abrir o arquivo " << "input.dat" << endl;
+    { // escreve no log
+        registrarErro("Erro ao abrir o arquivo input.dat");
         return Floresta();
     }
     // lê os dados do arquivo e armazenar na estrutura Floresta
@@ -40,8 +41,8 @@ void escreverArquivoMatriz(vector<vector<int>> matriz, int interacao)
 { // abre o arquivo de saida
     ofstream arquivo("output.dat", ios::app);
     if (!arquivo.is_open())
-    { // escrever no log****************************
-        cout << "Erro ao abrir o arquivo " << "output.dat" << endl;
+    { // escrever no log
+        registrarErro("Erro ao abrir o arquivo output.dat");
         return;
     }
     // escreve a interação e a matriz no arquivo de saida
@@ -63,8 +64,8 @@ void gerarRelatorio(Animal animal)
 { // abre o arquivo de saida
     ofstream arquivo("output.dat", ios::app);
     if (!arquivo.is_open())
-    { // escrever no log****************************
-        cout << "Erro ao abrir o arquivo " << "output.dat" << endl;
+    { // escrever no log
+        registrarErro("Erro ao abrir o arquivo output.dat");
         return;
     }
     // escreve o relatorio do animal
@@ -114,9 +115,25 @@ void limparSaida()
 {
     ofstream arquivo("output.dat", ios::trunc);
     if (!arquivo.is_open())
-    { // escrever no log****************************
-        cout << "Erro ao abrir o arquivo " << "output.dat" << endl;
+    { // escreve no log
+        registrarErro("Erro ao abrir o arquivo output.dat");
         return;
     }
     arquivo.close();
+}
+
+void registrarErro(string mensagem)
+{ // abre o arquivo de log
+    ofstream log("log.txt", ios::app);
+
+    // Obtém a data e hora atual
+    time_t agora = time(0);
+    char *dt = ctime(&agora);
+
+    // Remove o caractere de nova linha da data
+    string dataHora(dt);
+    dataHora.pop_back();
+
+    log << "[" << dataHora << "] " << mensagem << endl;
+    log.close();
 }
