@@ -2,19 +2,20 @@
 
 Este repositório contém a implementação de um simulador de propagação de incêndios em florestas, desenvolvido como parte de um trabalho acadêmico. O objetivo principal é modelar a propagação do fogo em uma matriz que representa a floresta, utilizando a linguagem de programação C++. Adicionalmente, o simulador é capaz de identificar rotas de fuga para um animal presente na floresta.
 
-## Índice
+<p align="center">
+  <a href="#descrição-do-problema">📘 Descrição do Problema</a> •
+  <a href="#especificação-do-trabalho">📋 Especificação do Trabalho</a> •
+  <a href="#compilação-e-execução">🛠️ Compilação e Execução</a> •
+  <a href="#entrada-e-saída-de-dados">📂 Entrada e Saída de Dados</a> •
+  <a href="#arquivo-de-configuração-confighpp">⚙️ Arquivo de Configuração</a> •
+  <a href="#regras-de-propagação">🔥 Regras de Propagação</a> •
+  <a href="#movimentação-do-animal">🦌 Movimentação do Animal</a> •
+  <a href="#padrões-de-propagação-e-análise">📊 Padrões de Propagação e Análise</a> •
+  <a href="#possíveis-melhorias">💡 Possíveis Melhorias</a> •
+  <a href="#estrutura-do-repositório">📁 Estrutura do Repositório</a> •
+  <a href="#licença">📝 Licença</a>
+</p>
 
-- [Descrição do Problema](#descrição-do-problema)
-- [Especificação do Trabalho](#especificação-do-trabalho)
-- [Configuração do Ambiente](#configuração-do-ambiente)
-- [Compilação e Execução](#compilação-e-execução)
-- [Entrada e Saída de Dados](#entrada-e-saída-de-dados)
-- [Estratégias de Propagação do Incêndio](#estratégias-de-propagação-do-incêndio)
-- [Movimentação do Animal](#movimentação-do-animal)
-- [Padrões de Propagação e Análise](#padrões-de-propagação-e-análise)
-- [Possíveis Melhorias e Algoritmos Emergentes](#possíveis-melhorias-e-algoritmos-emergentes)
-- [Estrutura do Repositório](#estrutura-do-repositório)
-- [Licença](#licença)
 
 ## Descrição do Problema
 
@@ -187,17 +188,17 @@ Exemplo visual:
   ```
 | Estado Inicial | Após 1 iteração |
 |----------------|-----------------|
-| 🌿 🌿 🌿 |     |🌿 🔥 🌿 |
-| 🌿 🔥 🌿 |     |🔥 🔥 🔥 |
-| 🌿 🌿 🌿 |     |🌿 🔥 🌿 |
+| 🌿 🌿 🌿 | 🌿 🔥 🌿 |
+| 🌿 🔥 🌿 | 🔥 🔥 🔥 |
+| 🌿 🌿 🌿 | 🌿 🔥 🌿 |
   ```
 - Com vento:
   ```
 | Estado Inicial | Após 1 iteração(leste,sul) |
 |----------------|-----------------|
-| 🌿 🌿 🌿 |     |🌿 🌿 🌿 |
-| 🌿 🔥 🌿 |     |🌿 🔥 🔥 |
-| 🌿 🌿 🌿 |     |🌿 🔥 🌿 |
+| 🌿 🌿 🌿 | 🌿 🌿 🌿 |
+| 🌿 🔥 🌿 | 🌿 🔥 🔥 |
+| 🌿 🌿 🌿 | 🌿 🔥 🌿 |
   ```
   ```
 
@@ -206,7 +207,6 @@ O simulador permite prever o potencial de destruição do incêndio ao observar 
 
 ## Possíveis Melhorias 
 
-### Possíveis Melhorias
 - Implementação de algoritmos de busca melhores como BFS,Dijkstra entre outros.
 - Implementar visualização gráfica.
 - Adicionar multiplos animais.
