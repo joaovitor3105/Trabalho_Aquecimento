@@ -188,6 +188,7 @@ Exemplo visual:
 🔥 = fogo | 🌿 = vegetação |
 
 - Sem vento:
+
   ```
 | Estado Inicial | Após 1 iteração |
 |----------------|-----------------|
@@ -195,7 +196,9 @@ Exemplo visual:
 | 🌿 🔥 🌿 | 🔥 🔥 🔥 |
 | 🌿 🌿 🌿 | 🌿 🔥 🌿 |
   ```
+
 - Com vento:
+
   ```
 | Estado Inicial | Após 1 iteração(leste,sul) |
 |----------------|-----------------|
