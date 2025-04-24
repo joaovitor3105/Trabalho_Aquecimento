@@ -1,5 +1,8 @@
 # Simulador de Propagação de Incêndios em Florestas
 
+![Descrição da imagem](img/Simulador De Incendio.png)
+
+
 Este repositório contém a implementação de um simulador de propagação de incêndios em florestas, desenvolvido como parte de um trabalho acadêmico. O objetivo principal é modelar a propagação do fogo em uma matriz que representa a floresta, utilizando a linguagem de programação C++. Adicionalmente, o simulador é capaz de identificar rotas de fuga para um animal presente na floresta.
 
 <p align="center">
