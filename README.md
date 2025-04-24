@@ -181,31 +181,25 @@ O animal busca rotas de fuga em direções ortogonais com a seguinte prioridade:
 ### Sem Vento
 O fogo se propaga em todas as direções ortogonais, resultando em uma expansão simétrica quando não há obstáculos.
 
-### Com Vento
-A propagação é direcionada, resultando em padrões assimétricos que dependem da configuração do vento.
-
 Exemplo visual:
 🔥 = fogo | 🌿 = vegetação |
 
-- Sem vento:
-
-  ```
 | Estado Inicial | Após 1 iteração |
 |----------------|-----------------|
 | 🌿 🌿 🌿 | 🌿 🔥 🌿 |
 | 🌿 🔥 🌿 | 🔥 🔥 🔥 |
 | 🌿 🌿 🌿 | 🌿 🔥 🌿 |
-  ```
+### Com Vento
+A propagação é direcionada, resultando em padrões assimétricos que dependem da configuração do vento.
 
-- Com vento:
-
-  ```
+Exemplo visual:
+🔥 = fogo | 🌿 = vegetação |
+  
 | Estado Inicial | Após 1 iteração(leste,sul) |
 |----------------|-----------------|
 | 🌿 🌿 🌿 | 🌿 🌿 🌿 |
 | 🌿 🔥 🌿 | 🌿 🔥 🔥 |
 | 🌿 🌿 🌿 | 🌿 🔥 🌿 |
-  ```
 
 ### Análise
 O simulador permite prever o potencial de destruição do incêndio ao observar o número de iterações e a área afetada.
