@@ -148,6 +148,9 @@ O arquivo `Config.hpp` permite configurar globalmente parâmetros importantes pa
 O arquivo `log.txt` é utilizado para registrar mensagens de erro.
 
 #### Exemplo de Conteúdo do `log.txt`
+
+-É ultilizado a biblioteca `<ctime>` para registrar a data e hora do erro.
+
 ```
 [2025-04-23 22:09:00] Erro ao abrir o arquivo input.dat.
 [2025-04-23 21:08:00] Não foi possível encontrar uma posição segura para o animal.
@@ -199,7 +202,6 @@ Exemplo visual:
 | 🌿 🌿 🌿 | 🌿 🌿 🌿 |
 | 🌿 🔥 🌿 | 🌿 🔥 🔥 |
 | 🌿 🌿 🌿 | 🌿 🔥 🌿 |
-  ```
   ```
 
 ### Análise
