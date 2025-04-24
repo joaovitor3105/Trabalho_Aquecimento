@@ -181,33 +181,41 @@ O fogo se propaga em todas as direções ortogonais, resultando em uma expansão
 A propagação é direcionada, resultando em padrões assimétricos que dependem da configuração do vento.
 
 Exemplo visual:
+🔥 = fogo | 🌿 = vegetação |
+
 - Sem vento:
   ```
-  Centro -> Todas as direções
+| Estado Inicial | Após 1 iteração |
+|----------------|-----------------|
+| 🌿 🌿 🌿 |     |🌿 🔥 🌿 |
+| 🌿 🔥 🌿 |     |🔥 🔥 🔥 |
+| 🌿 🌿 🌿 |     |🌿 🔥 🌿 |
   ```
 - Com vento:
   ```
-  Centro -> Apenas direções específicas configuradas
+| Estado Inicial | Após 1 iteração(leste,sul) |
+|----------------|-----------------|
+| 🌿 🌿 🌿 |     |🌿 🌿 🌿 |
+| 🌿 🔥 🌿 |     |🌿 🔥 🔥 |
+| 🌿 🌿 🌿 |     |🌿 🔥 🌿 |
+  ```
   ```
 
 ### Análise
 O simulador permite prever o potencial de destruição do incêndio ao observar o número de iterações e a área afetada.
 
-## Possíveis Melhorias e Algoritmos Emergentes
+## Possíveis Melhorias 
 
-### Melhorias Sugeridas
-- Implementação de algoritmos de busca heurística (e.g., A* ou Dijkstra) para a movimentação do animal.
-- Adição de variáveis ambientais, como umidade e topografia.
-- Paralelização do cálculo de propagação utilizando OpenMP ou MPI.
+### Possíveis Melhorias
+- Implementação de algoritmos de busca melhores como BFS,Dijkstra entre outros.
+- Implementar visualização gráfica.
+- Adicionar multiplos animais.
 
-### Algoritmos Emergentes
-- **Percolação Estocástica**: Modelagem probabilística da propagação do fogo.
-- **Autômatos Celulares Avançados**: Inclusão de regras complexas e interações locais para maior realismo.
 
 ## Estrutura do Repositório
 
 ```
-Algoritmos/
+Trabalho_Aquecimento/
 ├── src/
 │   ├── main.cpp
 │   ├── config.hpp

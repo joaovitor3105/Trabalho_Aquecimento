@@ -75,7 +75,7 @@ void gerarRelatorio(Animal animal)
     }
     else
     {
-        arquivo << "Animal morreu na interção: " << animal.getMorte() << endl;
+        arquivo << "Animal morreu na iteração: " << animal.getMorte() << endl;
     }
     arquivo << "Animal na posição: (" << animal.getPosicao().first << ", " << animal.getPosicao().second << ")" << endl;
     arquivo << "Passos: " << animal.getPassos() << ", Encontrou água: " << animal.getEncontrouAgua() << endl;
