@@ -1,8 +1,6 @@
-
 <div align="center">
   <img src="img/simulador.png" alt="Descrição da imagem" width="400">
 </div>
-
 
 Este repositório contém a implementação de um simulador de propagação de incêndios em florestas, desenvolvido como parte de um trabalho acadêmico. O objetivo principal é modelar a propagação do fogo em uma matriz que representa a floresta, utilizando a linguagem de programação C++. Adicionalmente, o simulador é capaz de identificar rotas de fuga para um animal presente na floresta.
 
@@ -11,28 +9,26 @@ Este repositório contém a implementação de um simulador de propagação de i
   <a href="#especificação-do-trabalho">📋 Especificação do Trabalho</a> •
   <a href="#compilação-e-execução">🛠️ Compilação e Execução</a> •
   <a href="#entrada-e-saída-de-dados">📂 Entrada e Saída de Dados</a> •
-  <a href="#arquivo-de-configuração-confighpp">⚙️ Arquivo de Configuração</a> •
-  <a href="#regras-de-propagação">🔥 Regras de Propagação</a> •
-  <a href="#movimentação-do-animal">🦌 Movimentação do Animal</a> •
+  <a href="#arquivo-de-configuração-(`config.hpp`)">⚙️ Arquivo de Configuração</a> •
+  <a href="#metodologia-do-código">🔍 Metodologia do Código</a> •
   <a href="#padrões-de-propagação-e-análise">📊 Padrões de Propagação e Análise</a> •
   <a href="#possíveis-melhorias">💡 Possíveis Melhorias</a> •
   <a href="#estrutura-do-repositório">📁 Estrutura do Repositório</a> •
   <a href="#licença">📝 Licença</a>
 </p>
-/     
 
 ## Descrição do Problema
 
 O simulador utiliza uma matriz dinâmica para representar a floresta. Cada célula da matriz pode conter os seguintes valores, que indicam o estado correspondente:
-- **0**: Área vazia (não queima)
+- **0**: Área segura (não queima)
 - **1**: Árvore saudável
 - **2**: Árvore em chamas
 - **3**: Árvore queimada (não propaga mais fogo)
-- **4**: Presença de água
+- **4**: Água
 
-A simulação consiste em iterar sobre a matriz para propagar o incêndio e deslocar um animal até que o fogo se extingue ou o número máximo de iterações seja alcançado.
+A simulação consiste em iterar sobre a matriz para propagar o incêndio e deslocar um animal até que o fogo se extinga ou o número máximo de iterações seja alcançado.
 
-## Especificação do Trabalho
+## 📝Especificação do Trabalho
 
 ### Requisitos
 
@@ -43,13 +39,12 @@ A simulação consiste em iterar sobre a matriz para propagar o incêndio e desl
 - Simulação iterativa e visual, exibindo o estado da floresta em cada iteração no arquivo de saída.
 - Compatibilidade com sistema Linux e compilação com `make`.
 
-### Funcionalidades
+### ✨Funcionalidades
 
 1. Representação da floresta como matriz dinâmica.
 2. Propagação do fogo com e sem influência do vento.
 3. Movimentação de um animal buscando rotas de fuga.
 4. Relatório de desempenho e análise ao final da simulação.
-
 
 ## Compilação e Execução
 
@@ -76,7 +71,7 @@ O arquivo `input.dat` deve conter:
 - Dimensões da matriz (N x M).
 - Coordenadas iniciais do incêndio.
 - Matriz da floresta, linha por linha.
-- Todos dados separados por espaço.
+- Todos os dados separados por espaço.
 
 #### Exemplo:
 ```
@@ -104,6 +99,7 @@ Interação 0:           Interação 1:           Interação 2:           Inter
 ```
 
 Após a finalização das interações será escrito no arquivo `output.dat` o relatório da simulação:
+
 #### Exemplo:
 ```
 ----------------------------------------
@@ -116,11 +112,11 @@ O vento estava ativo nas direções:
  Leste
  Oeste
 ----------------------------------
-
 ```
-### Arquivo de Configuração (`Config.hpp`)
 
-O arquivo `Config.hpp` permite configurar globalmente parâmetros importantes para a simulação, como a propagação do fogo com ou sem vento, as direções do vento e o número máximo de interações permitidas.
+## Arquivo de Configuração (`config.hpp`)
+
+O arquivo `config.hpp` permite configurar globalmente parâmetros importantes para a simulação, como a propagação do fogo com ou sem vento, as direções do vento e o número máximo de interações permitidas.
 
 #### Configurações Disponíveis
 1. **Habilitar ou Desabilitar o Vento**
@@ -149,19 +145,6 @@ O arquivo `Config.hpp` permite configurar globalmente parâmetros importantes pa
 - Caso `VENTO` esteja configurado como `false`, as variáveis `SUL`, `NORTE`, `LESTE` e `OESTE` serão ignoradas.
 - Alterações nesse arquivo devem ser realizadas antes da compilação do programa.
 
-### Arquivo de Saída de Erros (`log.txt`)
-O arquivo `log.txt` é utilizado para registrar mensagens de erro.
-
-#### Exemplo de Conteúdo do `log.txt`
-
--É ultilizado a biblioteca `<ctime>` para registrar a data e hora do erro.
-
-```
-[2025-04-23 22:09:00] Erro ao abrir o arquivo input.dat.
-[2025-04-23 21:08:00] Não foi possível encontrar uma posição segura para o animal.
-[2025-04-23 20:05:00] Erro ao abrir o arquivo output.dat.
-```
-
 ## Metodologia do Código
 
 ### Arquivo Principal: `Simulacao.cpp`
@@ -187,7 +170,6 @@ O loop principal é controlado por um contador de interações e uma variável d
 #### 4. Finalização:
 - Quando o loop termina, é gerado um relatório final da simulação (`gerarRelatorio()`).
 
-
 ---
 
 ### Método de Movimento do Animal (`mover()`)
@@ -199,12 +181,12 @@ O método avalia as posições ortogonais ao animal. Prioridades:
 - **Água** (código `4` na matriz): Melhor movimento.
 - **Áreas seguras** (código `0` ou `1`): Movimentos intermediários.
 - **Floresta Queimada** (código `3`): Movimentos ruins.
-- **No caso de só ter posições de fogo em sua volta** (código `2`):Continua na mesma posição.
+- **No caso de só ter posições de fogo em sua volta** (código `2`): Continua na mesma posição.
 
 #### 2. Movimento Decidido:
-- Se o animal estiver em uma posição segura(código `0`), ele pode ficar parado por até 3 iterações.
+- Se o animal estiver em uma posição segura (código `0`), ele pode ficar parado por até 3 iterações.
 - Caso contrário, ele se move para a melhor posição disponível, atualizando sua posição na matriz.
-- No caso de 2 opções de movimento com a mesma prioridade é decidido de forma aleatoria sua movimentação.
+- No caso de 2 opções de movimento com a mesma prioridade, é decidido de forma aleatória sua movimentação.
 
 ---
 
@@ -224,13 +206,6 @@ O método `propagarIncendio` está implementado na classe `Incendio`, em `Incend
 #### 3. Verificação de Condição Final:
 - Retorna `true` se todas as posições possíveis já foram queimadas, indicando o fim da propagação.
 
-
-### Regras Específicas
-
-- O animal executa sua movimentação antes da propagação do fogo.
-- Se o animal encontrar água, a célula é atualizada para 0, e as células adjacentes são convertidas para 1.
-- Caso o fogo alcance a posição do animal, ele recebe uma segunda chance para escapar,se ele estiver cercado pelo fogo ele ira morrer e não vai se mover mais.
-
 ## Padrões de Propagação e Análise
 
 ### Sem Vento
@@ -244,14 +219,15 @@ Exemplo visual:
 | 🌿 🌿 🌿 | 🌿 🔥 🌿 |
 | 🌿 🔥 🌿 | 🔥 🔥 🔥 |
 | 🌿 🌿 🌿 | 🌿 🔥 🌿 |
+
 ### Com Vento
 A propagação é direcionada, resultando em padrões assimétricos que dependem da configuração do vento.
 
 Exemplo visual:
 🔥 = fogo | 🌿 = vegetação |
-  
-| Estado Inicial | Após 1 iteração(leste,sul) |
-|----------------|-----------------|
+
+| Estado Inicial | Após 1 iteração (leste, sul) |
+|----------------|------------------------------|
 | 🌿 🌿 🌿 | 🌿 🌿 🌿 |
 | 🌿 🔥 🌿 | 🌿 🔥 🔥 |
 | 🌿 🌿 🌿 | 🌿 🔥 🌿 |
@@ -259,12 +235,11 @@ Exemplo visual:
 ### Análise
 O simulador permite prever o potencial de destruição do incêndio ao observar o número de iterações e a área afetada.
 
-## Possíveis Melhorias 
+## Possíveis Melhorias
 
-- Implementação de algoritmos de busca melhores como BFS,Dijkstra entre outros.
+- Implementação de algoritmos de busca melhores como BFS, Dijkstra, entre outros.
 - Implementar visualização gráfica.
-- Adicionar multiplos animais.
-
+- Adicionar múltiplos animais.
 
 ## Estrutura do Repositório
 
