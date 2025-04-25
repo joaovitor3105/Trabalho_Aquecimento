@@ -160,18 +160,68 @@ O arquivo `log.txt` é utilizado para registrar mensagens de erro.
 [2025-04-23 20:05:00] Erro ao abrir o arquivo output.dat.
 ```
 
-### Regras de Propagação
+## Metodologia do Código
 
-1. Árvore saudável (1) entra em chamas (2) se houver uma árvore vizinha em chamas.
-2. Árvore em chamas (2) se torna queimada (3) após um ciclo.
-3. O processo continua até não haver mais árvores em chamas ou o limite de iterações ser atingido.
+### Arquivo Principal: `Simulacao.cpp`
 
-## Movimentação do Animal
+O arquivo principal da simulação é o `Simulacao.cpp`. Ele contém a função `executarSimulacao`, que é responsável por organizar e executar os passos da simulação. Abaixo está a ordem geral de execução:
 
-O animal busca rotas de fuga em direções ortogonais com a seguinte prioridade:
-1. Melhor opção: célula com água (4).
-2. Opções intermediárias: célula vazia (0) ou árvore saudável (1).
-3. Pior opção: célula com árvore queimada (3).
+#### 1. Preparação Inicial:
+- Limpa o arquivo de saída (`limparSaida()`).
+- Lê o arquivo de entrada e inicializa a floresta (`lerArquivo()`).
+- Cria um objeto `Incendio` com a posição inicial do fogo.
+- Inicializa a matriz da floresta e o objeto `Animal`.
+
+#### 2. Posicionamento do Animal:
+- O animal é colocado na primeira posição segura (0 ou 1) disponível na matriz.
+
+#### 3. Execução do Loop da Simulação:
+O loop principal é controlado por um contador de interações e uma variável de controle (`matrizQueimada`). A cada iteração:
+- O animal se move, caso ainda esteja vivo (`animal.mover()`).
+- O incêndio se propaga na matriz (`incendio.propagarIncendio()`).
+- Verifica-se se o animal sobreviveu ou morreu, com uma tentativa de escapar caso esteja na mesma posição que o fogo.
+- Adiciona o estado da matriz e a iteração no `output.dat`.
+
+#### 4. Finalização:
+- Quando o loop termina, é gerado um relatório final da simulação (`gerarRelatorio()`).
+
+
+---
+
+### Método de Movimento do Animal (`mover()`)
+
+O método `mover` está implementado na classe `Animal`, em `Animal.cpp`. Ele define como o animal se desloca na matriz com base em prioridades.
+
+#### 1. Classificação de Movimentos:
+O método avalia as posições ortogonais ao animal. Prioridades:
+- **Água** (código `4` na matriz): Melhor movimento.
+- **Áreas seguras** (código `0` ou `1`): Movimentos intermediários.
+- **Floresta Queimada** (código `3`): Movimentos ruins.
+- **No caso de só ter posições de fogo em sua volta** (código `2`):Continua na mesma posição.
+
+#### 2. Movimento Decidido:
+- Se o animal estiver em uma posição segura(código `0`), ele pode ficar parado por até 3 iterações.
+- Caso contrário, ele se move para a melhor posição disponível, atualizando sua posição na matriz.
+- No caso de 2 opções de movimento com a mesma prioridade é decidido de forma aleatoria sua movimentação.
+
+---
+
+### Método de Propagação do Incêndio (`propagarIncendio`)
+
+O método `propagarIncendio` está implementado na classe `Incendio`, em `Incendio.cpp`. Ele define como o fogo se espalha na matriz.
+
+#### 1. Atualização da Matriz:
+- Marca as posições anteriormente queimadas como áreas carbonizadas (código `3`).
+- Atualiza as posições atuais do fogo.
+
+#### 2. Propagação do Fogo:
+- **Se o vento estiver ativo** (`VENTO` definido como `true`):
+    - O fogo se propaga nas direções configuradas (NORTE, SUL, LESTE, OESTE).
+- **Caso contrário**, o fogo se espalha para todas as posições adjacentes.
+
+#### 3. Verificação de Condição Final:
+- Retorna `true` se todas as posições possíveis já foram queimadas, indicando o fim da propagação.
+
 
 ### Regras Específicas
 
