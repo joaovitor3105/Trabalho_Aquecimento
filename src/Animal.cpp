@@ -63,7 +63,7 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
             {
                 movimentosIntermediarios.push_back(make_pair(novoX, novoY));
             }
-            else
+            else if (matriz[novoX][novoY] == 3)
             {
                 movimentosRuins.push_back(make_pair(novoX, novoY));
             }
@@ -127,6 +127,10 @@ void Animal::mover(vector<vector<int>> &matriz, int coluna, int linha)
         pair<int, int> movimento = movimentosRuins[rand() % movimentosRuins.size()];
         setPosicao(movimento.first, movimento.second);
         passos++;
+        return;
+    }
+    else
+    {
         return;
     }
 }

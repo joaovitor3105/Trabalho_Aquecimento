@@ -24,7 +24,7 @@ void executarSimulacao()
     {
         for (int j = 0; j < floresta.num_colunas; j++)
         {
-            if (matriz[i][j] == 0)
+            if (matriz[i][j] == 0 || matriz[i][j] == 1)
             {
                 animal.setPosicao(i, j);
                 encontrou = true;
@@ -68,7 +68,6 @@ void executarSimulacao()
                 animal.setMorte(i);
             }
         }
-
         // escreve matriz no arquivo
         escreverArquivoMatriz(matriz, i);
     }

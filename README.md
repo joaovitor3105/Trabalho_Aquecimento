@@ -18,7 +18,7 @@ Este repositório contém a implementação de um simulador de propagação de i
   <a href="#estrutura-do-repositório">📁 Estrutura do Repositório</a> •
   <a href="#licença">📝 Licença</a>
 </p>
-
+/     
 
 ## Descrição do Problema
 
