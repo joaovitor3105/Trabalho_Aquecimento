@@ -93,29 +93,30 @@ O arquivo `input.dat` deve conter:
 A cada iteração, o estado atualizado da matriz será escrito no arquivo `output.dat`.
 
 #### Exemplo:
-Após a 1ª iteração:
 ```
-interação: 1
-1 2 1 1 4 
-2 2 2 1 1 
-1 2 1 1 4 
-0 0 1 1 1 
-1 4 1 0 4 
+Interação 0:           Interação 1:           Interação 2:           Interação 3:           Interação 4:           Interação 5:           Interação 6:           Interação 7:
+
+1 1 1 1 4              1 2 1 1 4              2 2 2 1 4              2 3 2 2 0              3 3 3 2 0              3 3 3 3 0              3 3 3 3 0              3 3 3 3 0    
+1 2 1 1 1              2 2 2 1 1              2 3 2 2 1              3 3 3 2 2              3 3 3 3 2              3 3 3 3 3              3 3 3 3 3              3 3 3 3 1    
+1 1 1 1 4              1 2 1 1 4              2 2 2 1 4              2 3 2 2 4              3 3 3 2 4              3 3 3 3 4              3 3 3 3 4              3 3 3 1 0    
+0 0 1 1 1              0 0 1 1 1              0 0 1 1 1              0 0 2 1 1              0 0 2 2 1              0 0 3 2 2              0 0 3 3 2              0 0 3 3 3    
+1 4 1 0 4              1 4 1 0 4              1 4 1 0 4              1 4 1 0 4              1 4 2 0 4              1 4 2 0 4              1 4 3 0 4              1 4 3 0 4    
 ```
+
 Após a finalização das interações será escrito no arquivo `output.dat` o relatório da simulação:
 #### Exemplo:
 ```
 ----------------------------------------
-Animal sobreviveu.
-Animal na posição: (4, 1)
-Passos: 2, Encontrou água: 1
+Animal sobreviveu
+Animal na posição: (2, 4)
+Passos: 6, Encontrou água: 2
 O vento estava ativo nas direções:
  Sul
  Norte
  Leste
  Oeste
+----------------------------------
 
-----------------------------------------
 ```
 ### Arquivo de Configuração (`Config.hpp`)
 
