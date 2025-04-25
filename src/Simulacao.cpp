@@ -37,7 +37,7 @@ void executarSimulacao()
     if (!encontrou)
     {
         registrarErro("Não foi possível encontrar uma posição segura para o animal.");
-        return;
+        exit(1);
     }
 
     // variavel de controle para o loop

@@ -9,7 +9,7 @@ Floresta lerArquivo()
     if (!arquivo.is_open())
     { // escreve no log
         registrarErro("Erro ao abrir o arquivo input.dat");
-        return Floresta();
+        exit(1);
     }
     // lê os dados do arquivo e armazenar na estrutura Floresta
     int num_linhas = 0;
@@ -43,7 +43,7 @@ void escreverArquivoMatriz(vector<vector<int>> matriz, int interacao)
     if (!arquivo.is_open())
     { // escrever no log
         registrarErro("Erro ao abrir o arquivo output.dat");
-        return;
+        exit(1);
     }
     // escreve a interação e a matriz no arquivo de saida
     arquivo << "interação: " << interacao << endl;
@@ -66,7 +66,7 @@ void gerarRelatorio(Animal animal)
     if (!arquivo.is_open())
     { // escrever no log
         registrarErro("Erro ao abrir o arquivo output.dat");
-        return;
+        exit(1);
     }
     // escreve o relatorio do animal
     if (animal.getMorte() == 0)
@@ -117,7 +117,7 @@ void limparSaida()
     if (!arquivo.is_open())
     { // escreve no log
         registrarErro("Erro ao abrir o arquivo output.dat");
-        return;
+        exit(1);
     }
     arquivo.close();
 }
