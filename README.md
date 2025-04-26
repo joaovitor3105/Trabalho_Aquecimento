@@ -54,6 +54,12 @@ A simulação consiste em iterar sobre a matriz para propagar o incêndio e desl
 
 ## 💻Compilação e Execução
 
+### 🖥️ Clonagem do Repositório
+
+Para clonar este repositório e acessar os arquivos localmente, siga os passos abaixo:
+```bash
+git clone https://github.com/joaovitor3105/Trabalho_Aquecimento.git
+```
 Utilize os seguintes comandos no terminal para compilar e executar o simulador:
 
 1. Limpar arquivos antigos:
