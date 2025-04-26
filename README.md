@@ -309,4 +309,4 @@ Este projeto foi desenvolvido por **João Vitor**.
 - 📫 Entre em contato:
   - [GitHub](https://github.com/joaovitor3105)
   - [LinkedIn](https://www.linkedin.com/in/joaovitor3105/)
-  - E-mail: joaovitor3105@email.com
+  - E-mail: joaovitorlobatoromualdo16@gmail.com
