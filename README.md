@@ -2,22 +2,28 @@
   <img src="img/simulador.png" alt="Descrição da imagem" width="400">
 </div>
 
-Este repositório contém a implementação de um simulador de propagação de incêndios em florestas, desenvolvido como parte de um trabalho acadêmico. O objetivo principal é modelar a propagação do fogo em uma matriz que representa a floresta, utilizando a linguagem de programação C++. Adicionalmente, o simulador é capaz de identificar rotas de fuga para um animal presente na floresta.
+##  📝Introdução
 
-<p align="center">
-  <a href="#descrição-do-problema">📘 Descrição do Problema</a> •
-  <a href="#especificação-do-trabalho">📋 Especificação do Trabalho</a> •
-  <a href="#compilação-e-execução">🛠️ Compilação e Execução</a> •
-  <a href="#entrada-e-saída-de-dados">📂 Entrada e Saída de Dados</a> •
-  <a href="#arquivo-de-configuração-(`config.hpp`)">⚙️ Arquivo de Configuração</a> •
-  <a href="#metodologia-do-código">🔍 Metodologia do Código</a> •
-  <a href="#padrões-de-propagação-e-análise">📊 Padrões de Propagação e Análise</a> •
-  <a href="#possíveis-melhorias">💡 Possíveis Melhorias</a> •
-  <a href="#estrutura-do-repositório">📁 Estrutura do Repositório</a> •
-  <a href="#licença">📝 Licença</a>
-</p>
+Este trabalho foi proposto pelo professor [Michel Pires Silva](https://github.com/mpiress), da matéria Algoritmos e Estrutura de Dados I, do Centro Federal de Educação Tecnológica de Minas Gerais (CEFET - MG), Campus V - Divinópolis.
+Este repositório contém a implementação de um simulador de propagação de incêndios em florestas. O objetivo principal é modelar a propagação do fogo em uma matriz que representa a floresta, utilizando a linguagem de programação C++. Adicionalmente, o simulador é capaz de identificar rotas de fuga para um animal presente na floresta.
 
-## Descrição do Problema
+## 📚 Sumário
+
+
+1. 🧩 Descrição do Problema
+2. 📋 Especificação do Trabalho
+3. 🛠️ Compilação e Execução
+4. 📂 Entrada e Saída de Dados
+5. ⚙️ Arquivo de Configuração
+6. ⚠️ Arquivo de Saída de Erros
+7. 🔍 Metodologia do Código
+8. 📊 Padrões de Propagação e Análise
+9. 💡 Possíveis Melhorias
+10. 📁 Estrutura do Repositório
+11. 💭 Créditos
+12. 📝 Licença
+
+## 🧩 Descrição do Problema
 
 O simulador utiliza uma matriz dinâmica para representar a floresta. Cada célula da matriz pode conter os seguintes valores, que indicam o estado correspondente:
 - **0**: Área segura (não queima)
@@ -46,7 +52,7 @@ A simulação consiste em iterar sobre a matriz para propagar o incêndio e desl
 3. Movimentação de um animal buscando rotas de fuga.
 4. Relatório de desempenho e análise ao final da simulação.
 
-## Compilação e Execução
+## 💻Compilação e Execução
 
 Utilize os seguintes comandos no terminal para compilar e executar o simulador:
 
@@ -63,9 +69,9 @@ Utilize os seguintes comandos no terminal para compilar e executar o simulador:
    make run
    ```
 
-## Entrada e Saída de Dados
+## 📂Entrada e Saída de Dados
 
-### Arquivo de Entrada (`input.dat`)
+### 📥Arquivo de Entrada (`input.dat`)
 
 O arquivo `input.dat` deve conter:
 - Dimensões da matriz (N x M).
@@ -83,7 +89,7 @@ O arquivo `input.dat` deve conter:
 1 4 1 0 4
 ```
 
-### Arquivo de Saída (`output.dat`)
+### 📤Arquivo de Saída (`output.dat`)
 
 A cada iteração, o estado atualizado da matriz será escrito no arquivo `output.dat`.
 
@@ -114,7 +120,7 @@ O vento estava ativo nas direções:
 ----------------------------------
 ```
 
-## Arquivo de Configuração (`config.hpp`)
+## ⚙️Arquivo de Configuração (`config.hpp`)
 
 O arquivo `config.hpp` permite configurar globalmente parâmetros importantes para a simulação, como a propagação do fogo com ou sem vento, as direções do vento e o número máximo de interações permitidas.
 
@@ -145,9 +151,24 @@ O arquivo `config.hpp` permite configurar globalmente parâmetros importantes pa
 - Caso `VENTO` esteja configurado como `false`, as variáveis `SUL`, `NORTE`, `LESTE` e `OESTE` serão ignoradas.
 - Alterações nesse arquivo devem ser realizadas antes da compilação do programa.
 
-## Metodologia do Código
+## ⚠️Arquivo de Saída de Erros (`log.txt`)
+O arquivo `log.txt` é utilizado para registrar mensagens de erro.
 
-### Arquivo Principal: `Simulacao.cpp`
+### 🕒 Registro de Erros com Data e Hora
+-É ultilizado a biblioteca `<ctime>` para registrar a data e hora do erro.
+
+### Exemplo de Conteúdo do `log.txt`
+
+
+```
+[2025-04-23 22:09:00] Erro ao abrir o arquivo input.dat.
+[2025-04-23 21:08:00] Não foi possível encontrar uma posição segura para o animal.
+[2025-04-23 20:05:00] Erro ao abrir o arquivo output.dat.
+```
+
+## 🧠Metodologia do Código
+
+### 🕹️Arquivo Principal: `Simulacao.cpp`
 
 O arquivo principal da simulação é o `Simulacao.cpp`. Ele contém a função `executarSimulacao`, que é responsável por organizar e executar os passos da simulação. Abaixo está a ordem geral de execução:
 
@@ -172,7 +193,7 @@ O loop principal é controlado por um contador de interações e uma variável d
 
 ---
 
-### Método de Movimento do Animal (`mover()`)
+### 🐾Método de Movimento do Animal (`mover()`)
 
 O método `mover` está implementado na classe `Animal`, em `Animal.cpp`. Ele define como o animal se desloca na matriz com base em prioridades.
 
@@ -190,7 +211,7 @@ O método avalia as posições ortogonais ao animal. Prioridades:
 
 ---
 
-### Método de Propagação do Incêndio (`propagarIncendio`)
+### 🔥Método de Propagação do Incêndio (`propagarIncendio`)
 
 O método `propagarIncendio` está implementado na classe `Incendio`, em `Incendio.cpp`. Ele define como o fogo se espalha na matriz.
 
@@ -206,9 +227,10 @@ O método `propagarIncendio` está implementado na classe `Incendio`, em `Incend
 #### 3. Verificação de Condição Final:
 - Retorna `true` se todas as posições possíveis já foram queimadas, indicando o fim da propagação.
 
-## Padrões de Propagação e Análise
 
-### Sem Vento
+## 📊Padrões de Propagação e Análise
+
+### 🌿🔥Sem Vento
 O fogo se propaga em todas as direções ortogonais, resultando em uma expansão simétrica quando não há obstáculos.
 
 Exemplo visual:
@@ -220,7 +242,7 @@ Exemplo visual:
 | 🌿 🔥 🌿 | 🔥 🔥 🔥 |
 | 🌿 🌿 🌿 | 🌿 🔥 🌿 |
 
-### Com Vento
+### 💨🔥Com Vento
 A propagação é direcionada, resultando em padrões assimétricos que dependem da configuração do vento.
 
 Exemplo visual:
@@ -235,29 +257,33 @@ Exemplo visual:
 ### Análise
 O simulador permite prever o potencial de destruição do incêndio ao observar o número de iterações e a área afetada.
 
-## Possíveis Melhorias
+## 💡Possíveis Melhorias
 
 - Implementação de algoritmos de busca melhores como BFS, Dijkstra, entre outros.
 - Implementar visualização gráfica.
 - Adicionar múltiplos animais.
 
-## Estrutura do Repositório
+## 📁Estrutura do Repositório
 
 ```
 Trabalho_Aquecimento/
 ├── src/
 │   ├── main.cpp
-│   ├── config.hpp
-│   ├── animal.cpp
-│   ├── fire.cpp
-│   ├── matrix.cpp
+│   ├── Config.hpp
+│   ├── Animal.cpp
+│   ├── Incendio.cpp
+│   ├── Simulacao.cpp
 │   └── ...
 ├── input.dat
 ├── output.dat
+├── log.txt
 ├── Makefile
 └── README.md
 ```
+## 💭 Créditos
 
-## Licença
+Este projeto usa um Makefile fornecido pelo professor [Michel Pires Silva](https://github.com/mpiress).
+
+## 📄Licença
 
 Este projeto foi desenvolvido para fins acadêmicos e está disponível sob a licença MIT.
