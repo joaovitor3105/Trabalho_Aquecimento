@@ -308,5 +308,5 @@ Este projeto foi desenvolvido por **João Vitor**.
 - 💻 Linguagens preferidas: C++, Python e Java.
 - 📫 Entre em contato:
   - [GitHub](https://github.com/joaovitor3105)
-  - [LinkedIn](https://www.linkedin.com/in/joaovitor3105/)
+  - [LinkedIn]([https://www.linkedin.com/in/joaovitor3105/](https://www.linkedin.com/in/jo%C3%A3o-v%C3%ADtor-lobato-romualdo-974b02339/))
   - E-mail: joaovitorlobatoromualdo16@gmail.com
