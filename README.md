@@ -21,7 +21,7 @@ Este repositório contém a implementação de um simulador de propagação de i
 9. 💡 Possíveis Melhorias
 10. 📁 Estrutura do Repositório
 11. 💭 Créditos
-12. 📝 Licença
+12. 👨‍💻 Autor
 
 ## 🧩 Descrição do Problema
 
@@ -300,6 +300,13 @@ Trabalho_Aquecimento/
 
 Este projeto usa um Makefile fornecido pelo professor [Michel Pires Silva](https://github.com/mpiress).
 
-## 📄Licença
+## 👨‍💻 Autor
 
-Este projeto foi desenvolvido para fins acadêmicos e está disponível sob a licença MIT.
+Este projeto foi desenvolvido por **João Vitor**.
+
+- 🎓 Estudante e entusiasta de programação.
+- 💻 Linguagens preferidas: C++, Python e Java.
+- 📫 Entre em contato:
+  - [GitHub](https://github.com/joaovitor3105)
+  - [LinkedIn](https://www.linkedin.com/in/joaovitor3105/)
+  - E-mail: joaovitor3105@email.com
